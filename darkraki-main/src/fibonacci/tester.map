@@ -1,0 +1,58 @@
+
+Discarded input sections
+
+ .text          0x0000000000000000       0x50 tester.o
+ .data          0x0000000000000000        0x0 tester.o
+ .bss           0x0000000000000000        0x0 tester.o
+ .text.startup  0x0000000000000000       0x38 tester.o
+ .comment       0x0000000000000000       0x2c tester.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 tester.o
+ .riscv.attributes
+                0x0000000000000000       0x1a tester.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+ROM              0x0000000000000100 0x0000000000000400 xrw
+RAM              0x0000000000000000 0x0000000000000100 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+Address of section .text set to 0x0
+                0x0000000000000080                __heap_size = 0x80
+                0x0000000000000080                __stack_size = 0x80
+
+.text           0x0000000000000000        0x0
+ *(.boot)
+ *(.text)
+ *(.text)
+ *(.rodata*)
+
+.data
+ *(.sbss)
+ *(.data)
+ *(.bss)
+ *(.rela*)
+ *(COMMON)
+
+.heap           0x0000000000000000       0x80
+                0x0000000000000000                . = ALIGN (0x4)
+                [!provide]                        PROVIDE (end = .)
+                0x0000000000000000                _sheap = .
+                0x0000000000000080                . = (. + __heap_size)
+ *fill*         0x0000000000000000       0x80 
+                0x0000000000000080                . = ALIGN (0x4)
+                0x0000000000000080                _eheap = .
+
+.stack          0x0000000000000080       0x80
+                0x0000000000000080                . = ALIGN (0x4)
+                0x0000000000000080                _estack = .
+                0x0000000000000100                . = (. + __stack_size)
+ *fill*         0x0000000000000080       0x80 
+                0x0000000000000100                . = ALIGN (0x4)
+                0x0000000000000100                _sstack = .
+LOAD tester.o
+LOAD ../darklibc/darklibc.a
+OUTPUT(tester.out elf32-littleriscv)

@@ -1,0 +1,158 @@
+Archive member included to satisfy reference by file (symbol)
+
+darkshell/darkshell.a(main.o)
+                              boot.o (main)
+darklibc/darklibc.a(stdio.o)  darkshell/darkshell.a(main.o) (gets)
+darklibc/darklibc.a(io.o)     darkshell/darkshell.a(main.o) (board_name)
+darklibc/darklibc.a(util.o)   darkshell/darkshell.a(main.o) (check4rv32i)
+
+Discarded input sections
+
+ .data          0x0000000000000000        0x0 boot.o
+ .bss           0x0000000000000000        0x0 boot.o
+ .text          0x0000000000000000        0x0 darkshell/darkshell.a(main.o)
+ .data          0x0000000000000000        0x0 darkshell/darkshell.a(main.o)
+ .bss           0x0000000000000000        0x0 darkshell/darkshell.a(main.o)
+ .text          0x0000000000000000        0x0 darklibc/darklibc.a(stdio.o)
+ .data          0x0000000000000000        0x0 darklibc/darklibc.a(stdio.o)
+ .bss           0x0000000000000000        0x0 darklibc/darklibc.a(stdio.o)
+ .text.getchar  0x0000000000000000       0x20 darklibc/darklibc.a(stdio.o)
+ .text.putchar  0x0000000000000000       0x48 darklibc/darklibc.a(stdio.o)
+ .text.putstr   0x0000000000000000       0x64 darklibc/darklibc.a(stdio.o)
+ .text.puts     0x0000000000000000       0x90 darklibc/darklibc.a(stdio.o)
+ .text.strncmp  0x0000000000000000       0x64 darklibc/darklibc.a(stdio.o)
+ .text.strlen   0x0000000000000000       0x28 darklibc/darklibc.a(stdio.o)
+ .text.strtok   0x0000000000000000       0xb8 darklibc/darklibc.a(stdio.o)
+ .text.memcpy   0x0000000000000000       0x24 darklibc/darklibc.a(stdio.o)
+ .text.atoi     0x0000000000000000       0x6c darklibc/darklibc.a(stdio.o)
+ .text.xtoi     0x0000000000000000       0x58 darklibc/darklibc.a(stdio.o)
+ .text.__umulsi3
+                0x0000000000000000       0x38 darklibc/darklibc.a(stdio.o)
+ .text.__mulsi3
+                0x0000000000000000       0x84 darklibc/darklibc.a(stdio.o)
+ .text.__udiv_umod_si3
+                0x0000000000000000       0x74 darklibc/darklibc.a(stdio.o)
+ .text.__div_mod_si3
+                0x0000000000000000       0xac darklibc/darklibc.a(stdio.o)
+ .text.__divsi3
+                0x0000000000000000       0x94 darklibc/darklibc.a(stdio.o)
+ .text.__modsi3
+                0x0000000000000000       0x8c darklibc/darklibc.a(stdio.o)
+ .text.usleep   0x0000000000000000       0x90 darklibc/darklibc.a(stdio.o)
+ .bss.nxt.0     0x0000000000000000        0x4 darklibc/darklibc.a(stdio.o)
+ .text          0x0000000000000000        0x0 darklibc/darklibc.a(io.o)
+ .data          0x0000000000000000        0x0 darklibc/darklibc.a(io.o)
+ .bss           0x0000000000000000        0x0 darklibc/darklibc.a(io.o)
+ .data          0x0000000000000000        0x0 darklibc/darklibc.a(util.o)
+ .bss           0x0000000000000000        0x0 darklibc/darklibc.a(util.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+MEM              0x0000000000000000 0x0000000000001000 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+
+.text           0x0000000000000000      0xb8c
+ *boot*.o(.text)
+ .text          0x0000000000000000      0x1c4 boot.o
+                0x0000000000000000                _start
+ *boot*.o(.rodata)
+                0x0000000000000200                . = 0x200
+ *fill*         0x00000000000001c4       0x3c 
+                0x0000000000000200                _text = .
+ *(.text*)
+ .text.startup  0x0000000000000200      0x2f0 darkshell/darkshell.a(main.o)
+                0x0000000000000200                main
+ .text.gets     0x00000000000004f0       0xcc darklibc/darklibc.a(stdio.o)
+                0x00000000000004f0                gets
+ .text.putnum   0x00000000000005bc      0x194 darklibc/darklibc.a(stdio.o)
+                0x00000000000005bc                putnum
+ .text.printf   0x0000000000000750      0x1a0 darklibc/darklibc.a(stdio.o)
+                0x0000000000000750                printf
+ .text.strcmp   0x00000000000008f0       0x48 darklibc/darklibc.a(stdio.o)
+                0x00000000000008f0                strcmp
+ .text.memset   0x0000000000000938       0x20 darklibc/darklibc.a(stdio.o)
+                0x0000000000000938                memset
+ .text.__udivsi3
+                0x0000000000000958       0x60 darklibc/darklibc.a(stdio.o)
+                0x0000000000000958                __udivsi3
+ .text.__umodsi3
+                0x00000000000009b8       0x60 darklibc/darklibc.a(stdio.o)
+                0x00000000000009b8                __umodsi3
+ .text.board_name
+                0x0000000000000a18      0x114 darklibc/darklibc.a(io.o)
+                0x0000000000000a18                board_name
+ .text.mac      0x0000000000000b2c        0x8 darklibc/darklibc.a(io.o)
+                0x0000000000000b2c                mac
+ .text          0x0000000000000b34       0x58 darklibc/darklibc.a(util.o)
+                0x0000000000000b34                check4rv32i
+                0x0000000000000b44                get_mtvec
+                0x0000000000000b50                get_mepc
+                0x0000000000000b5c                get_mie
+                0x0000000000000b68                get_mip
+                0x0000000000000b74                set_mtvec
+                0x0000000000000b7c                set_mepc
+                0x0000000000000b84                set_mie
+                0x0000000000000b8c                _etext = .
+
+.data           0x0000000000000b8c      0x46b
+                0x0000000000000b8c                _data = .
+ *(.rodata*)
+ .rodata.str1.4
+                0x0000000000000b8c      0x142 darkshell/darkshell.a(main.o)
+                                        0x146 (size before relaxing)
+ *fill*         0x0000000000000cce        0x2 
+ .rodata.putstr.str1.4
+                0x0000000000000cd0        0x7 darklibc/darklibc.a(stdio.o)
+ *fill*         0x0000000000000cd7        0x1 
+ .rodata.putnum.str1.4
+                0x0000000000000cd8       0x11 darklibc/darklibc.a(stdio.o)
+ *fill*         0x0000000000000ce9        0x3 
+ .rodata.board_name.str1.4
+                0x0000000000000cec      0x1d4 darklibc/darklibc.a(io.o)
+ .rodata.board_name
+                0x0000000000000ec0       0x4c darklibc/darklibc.a(io.o)
+ *(.data*)
+ .data.io       0x0000000000000f0c        0x4 darklibc/darklibc.a(io.o)
+                0x0000000000000f0c                io
+                0x0000000000001710                _global = (. + 0x800)
+ *(.sbss*)
+ *(.bss*)
+ .bss.utimers   0x0000000000000f10        0x4 darklibc/darklibc.a(io.o)
+                0x0000000000000f10                utimers
+ *(.sdata*)
+ *(.*)
+ .riscv.attributes
+                0x0000000000000f14       0x1a boot.o
+ .rela.got      0x0000000000000f2e        0x0 boot.o
+ *fill*         0x0000000000000f2e        0x2 
+ .got           0x0000000000000f30       0x28 boot.o
+                0x0000000000000f30                _GLOBAL_OFFSET_TABLE_
+ .got.plt       0x0000000000000f58        0x8 boot.o
+ .comment       0x0000000000000f60       0x2b darkshell/darkshell.a(main.o)
+                                         0x2c (size before relaxing)
+ .note.GNU-stack
+                0x0000000000000f8b        0x0 darkshell/darkshell.a(main.o)
+ .riscv.attributes
+                0x0000000000000f8b       0x1a darkshell/darkshell.a(main.o)
+ .comment       0x0000000000000fa5       0x2c darklibc/darklibc.a(stdio.o)
+ .note.GNU-stack
+                0x0000000000000fa5        0x0 darklibc/darklibc.a(stdio.o)
+ .riscv.attributes
+                0x0000000000000fa5       0x1a darklibc/darklibc.a(stdio.o)
+ .comment       0x0000000000000fbf       0x2c darklibc/darklibc.a(io.o)
+ .note.GNU-stack
+                0x0000000000000fbf        0x0 darklibc/darklibc.a(io.o)
+ .riscv.attributes
+                0x0000000000000fbf       0x1a darklibc/darklibc.a(io.o)
+ .riscv.attributes
+                0x0000000000000fd9       0x1e darklibc/darklibc.a(util.o)
+                0x0000000000000ff7                _edata = .
+                0x0000000000001000                PROVIDE (_stack = (ORIGIN (MEM) + LENGTH (MEM)))
+LOAD boot.o
+LOAD darkshell/darkshell.a
+LOAD darklibc/darklibc.a
+OUTPUT(darksocv.o elf32-littleriscv)
